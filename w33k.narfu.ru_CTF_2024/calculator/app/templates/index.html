@@ -1,0 +1,39 @@
+{% extends 'main-template.html' %}
+
+{% block head %}
+<title>Flask Calculator</title>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="text-center">
+        <h1>Welcome to Flask Calculator</h1>
+        <form action="/" method="POST">
+            <div class="form-group">
+                <input maxlength="9" type="text" class="form-control" name="Expression" value="{{ exp or '2 + 2 * 2' }}"
+                       placeholder="Enter expression">
+            </div>
+            <button type="submit" class="btn btn-primary">Calculate</button>
+        </form>
+    </div>
+
+    {% if result %}
+    <div class="results">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Your Input:</th>
+                <th scope="col">Result:</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>{{ exp }}</td>
+                <td>{{ result }}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
